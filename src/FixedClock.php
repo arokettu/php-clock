@@ -15,7 +15,7 @@ final class FixedClock implements ClockInterface
 
     public function __construct(DateTimeInterface $dateTime)
     {
-        $this->dateTime = Helpers\DateTimeHelper::createFromInterface($dateTime);
+        $this->dateTime = Helpers\DateTimeHelper::createImmutableFromInterface($dateTime);
     }
 
     public function now(): DateTimeImmutable

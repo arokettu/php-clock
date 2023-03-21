@@ -11,7 +11,7 @@ use LogicException;
 
 final class DateTimeHelper
 {
-    public static function createFromInterface(DateTimeInterface $dateTime): DateTimeImmutable
+    public static function createImmutableFromInterface(DateTimeInterface $dateTime): DateTimeImmutable
     {
         if ($dateTime instanceof DateTimeImmutable) {
             return $dateTime;
