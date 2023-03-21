@@ -23,8 +23,9 @@ final class StaticClock implements ClockInterface
         return $this->dateTime;
     }
 
-    public function set(DateTimeInterface $dateTime)
+    public function set(DateTimeInterface $dateTime): self
     {
         $this->dateTime = Helpers\DateTimeHelper::createImmutableFromInterface($dateTime);
+        return $this;
     }
 }

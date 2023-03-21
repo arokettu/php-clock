@@ -7,7 +7,6 @@ namespace Arokettu\Clock\Helpers;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
-use LogicException;
 
 final class DateTimeHelper
 {
@@ -21,14 +20,24 @@ final class DateTimeHelper
             return DateTimeImmutable::createFromMutable($dateTime);
         }
 
-        // just in case DateTimeInterface gets instantiable
-        if (method_exists(DateTimeImmutable::class, 'createFromInterface')) {
-            return DateTimeImmutable::createFromInterface($dateTime);
+        // should be a dead code but keep it anyway
+        return DateTimeImmutable::createFromFormat('U u', $dateTime->format('U u'))
+            ->setTimezone($dateTime->getTimezone());
+    }
+
+    public static function createMutableFromInterface(DateTimeInterface $dateTime): DateTime
+    {
+        if ($dateTime instanceof DateTime) {
+            return clone $dateTime; // decouple the instance, like DateTime::createFromInterface(DateTime) does
         }
 
-        throw new LogicException(
-            '$dateTime is DateTimeInterface but neither DateTime nor DateTimeImmutable and ' .
-            'can\'t be converted from the interface. The library needs an upgrade apparently'
-        );
+        if ($dateTime instanceof DateTimeImmutable && method_exists(DateTime::class, 'createFromImmutable')) {
+            return DateTime::createFromImmutable($dateTime);
+        }
+
+        $dt = DateTime::createFromFormat('U u', $dateTime->format('U u'));
+        $dt->setTimezone($dateTime->getTimezone());
+
+        return $dt;
     }
 }
