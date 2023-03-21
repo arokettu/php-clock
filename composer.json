@@ -1,0 +1,34 @@
+{
+    "name": "arokettu/clock",
+    "description": "PSR-20 Implementation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anton Smirnov",
+            "email": "sandfox@sandfox.me"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Arokettu\\Clock\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.0 | ^8.0",
+        "psr/clock": "^1.0"
+    },
+    "require-dev": {
+        "sandfox.dev/code-standard": "^1.2022.06.29",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "provide": {
+        "psr/clock-implementation": "1.0"
+    }
+}
