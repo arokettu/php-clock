@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use DateTimeInterface;
 use Psr\Clock\ClockInterface;
 
-final class FixedClock implements ClockInterface
+final class StaticClock implements ClockInterface
 {
     /** @var DateTimeImmutable */
     private $dateTime;
