@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use DateTimeZone;
 use Psr\Clock\ClockInterface;
 
-final class NativeClock implements ClockInterface
+final class SystemClock implements ClockInterface
 {
     /** @var DateTimeZone|null */
     private $timeZone;
@@ -20,6 +20,6 @@ final class NativeClock implements ClockInterface
 
     public function now(): DateTimeImmutable
     {
-        return new DateTimeImmutable('new', $this->timeZone);
+        return new DateTimeImmutable('now', $this->timeZone);
     }
 }
