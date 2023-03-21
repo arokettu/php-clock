@@ -20,7 +20,9 @@ final class MutableClock implements ClockInterface
 
     public function __construct(DateTimeInterface $dateTime = null)
     {
-        $this->dateTime = Helpers\DateTimeHelper::createMutableFromInterface($dateTime);
+        $this->dateTime = $dateTime ?
+            Helpers\DateTimeHelper::createMutableFromInterface($dateTime) :
+            new DateTime('now');
     }
 
     public function now(): DateTimeImmutable
