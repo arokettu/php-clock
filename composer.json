@@ -20,11 +20,17 @@
             "Arokettu\\Clock\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Arokettu\\Clock\\Tests\\": "tests/"
+        }
+    },
     "require": {
         "php": "^7.0 | ^8.0",
         "psr/clock": "^1.0"
     },
     "require-dev": {
+        "phpunit/phpunit": ">= 6.0.0 < 10",
         "sandfox.dev/code-standard": "^1.2022.06.29",
         "squizlabs/php_codesniffer": "*"
     },
