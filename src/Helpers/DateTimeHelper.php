@@ -8,6 +8,9 @@ use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 
+/**
+ * @internal
+ */
 final class DateTimeHelper
 {
     public static function createImmutableFromInterface(DateTimeInterface $dateTime): DateTimeImmutable
