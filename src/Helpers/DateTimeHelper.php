@@ -24,8 +24,10 @@ final class DateTimeHelper
         }
 
         // should be a dead code but keep it anyway
+        // @codeCoverageIgnoreStart
         return DateTimeImmutable::createFromFormat('U u', $dateTime->format('U u'))
             ->setTimezone($dateTime->getTimezone());
+        // @codeCoverageIgnoreEnd
     }
 
     public static function createMutableFromInterface(DateTimeInterface $dateTime): DateTime

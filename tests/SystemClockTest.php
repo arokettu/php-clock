@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SystemClockTest extends TestCase
 {
-    public function testNative()
+    public function testTime()
     {
         $clock = new SystemClock();
 
@@ -24,10 +24,10 @@ class SystemClockTest extends TestCase
 
     public function testTz()
     {
-        $clock = new SystemClock(new \DateTimeZone('UTC'));
-        self::assertEquals('UTC', $clock->now()->getTimezone()->getName());
+        $clock1 = new SystemClock(new \DateTimeZone('UTC'));
+        self::assertEquals('UTC', $clock1->now()->getTimezone()->getName());
 
-        $clock = new SystemClock(new \DateTimeZone('Europe/Tallinn'));
-        self::assertEquals('Europe/Tallinn', $clock->now()->getTimezone()->getName());
+        $clock2 = new SystemClock(new \DateTimeZone('Europe/Tallinn'));
+        self::assertEquals('Europe/Tallinn', $clock2->now()->getTimezone()->getName());
     }
 }

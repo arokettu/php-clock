@@ -13,9 +13,11 @@ final class StaticClock implements ClockInterface
     /** @var DateTimeImmutable */
     private $dateTime;
 
-    public function __construct(DateTimeInterface $dateTime)
+    public function __construct(DateTimeInterface $dateTime = null)
     {
-        $this->dateTime = Helpers\DateTimeHelper::createImmutableFromInterface($dateTime);
+        $this->dateTime = $dateTime ?
+            Helpers\DateTimeHelper::createImmutableFromInterface($dateTime) :
+            new DateTimeImmutable('now');
     }
 
     public function now(): DateTimeImmutable
