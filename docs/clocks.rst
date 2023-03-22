@@ -69,6 +69,23 @@ MutableClock
 TickingClock
 ------------
 
+``Arokettu\Clock\TickingClock``
+
+A clock that advances for a DateInterval value on every call::
+
+    <?php
+
+    $step = DateInterval::createFromDateString('+1 minute');
+    // move forward by 1 minute from now
+    $clock = new \Arokettu\Clock\TickingClock($step);
+    // optionally with an initial time
+    $time = new DateTime('2022-02-03 12:34');
+    // move forward by 1 minute from 2022-02-03 12:34:00
+    $clock = new \Arokettu\Clock\TickingClock($step, $time);
+
+    $clock->now(); // 2022-02-03T12:34:00
+    $clock->now(); // 2022-02-03T12:35:00
+
 CallbackClock
 -------------
 
