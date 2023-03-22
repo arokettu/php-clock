@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Arokettu\Clock\Helpers;
 
-use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
@@ -28,25 +27,6 @@ final class DateTimeHelper
         // @codeCoverageIgnoreStart
         return DateTimeImmutable::createFromFormat('U u', $dateTime->format('U u'))
             ->setTimezone($dateTime->getTimezone());
-        // @codeCoverageIgnoreEnd
-    }
-
-    public static function createMutableFromInterface(DateTimeInterface $dateTime): DateTime
-    {
-        if ($dateTime instanceof DateTime) {
-            return clone $dateTime; // decouple the instance, like DateTime::createFromInterface(DateTime) does
-        }
-
-        if ($dateTime instanceof DateTimeImmutable && method_exists(DateTime::class, 'createFromImmutable')) {
-            return DateTime::createFromImmutable($dateTime);
-        }
-
-        // for PHP < 7.3
-        // @codeCoverageIgnoreStart
-        $dt = DateTime::createFromFormat('U u', $dateTime->format('U u'));
-        $dt->setTimezone($dateTime->getTimezone());
-
-        return $dt;
         // @codeCoverageIgnoreEnd
     }
 }

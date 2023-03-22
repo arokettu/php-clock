@@ -15,9 +15,7 @@ final class MutableClock implements ClockInterface
 
     public function __construct(?DateTimeInterface $dateTime = null)
     {
-        $this->dateTime = $dateTime ?
-            Helpers\DateTimeHelper::createMutableFromInterface($dateTime) :
-            new DateTime('now');
+        $this->dateTime = $dateTime ? DateTime::createFromInterface($dateTime) : new DateTime('now');
     }
 
     public function now(): DateTimeImmutable
@@ -27,7 +25,7 @@ final class MutableClock implements ClockInterface
 
     public function set(DateTimeInterface $dateTime): self
     {
-        $this->dateTime = Helpers\DateTimeHelper::createMutableFromInterface($dateTime);
+        $this->dateTime = DateTime::createFromInterface($dateTime);
         return $this;
     }
 
@@ -38,7 +36,7 @@ final class MutableClock implements ClockInterface
     }
 
     // deep cloning
-    public function __clone()
+    public function __clone(): void
     {
         $this->dateTime = clone $this->dateTime;
     }
