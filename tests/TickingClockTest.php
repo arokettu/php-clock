@@ -38,11 +38,9 @@ class TickingClockTest extends TestCase
         $clock2 = new TickingClock($i, new \DateTimeImmutable('2050-07-25 16:00'));
         $this->assertEquals(new \DateTimeImmutable('2050-07-25 16:00'), $clock2->now());
 
-        if (class_exists(CarbonImmutable::class)) {
-            // accepts carbon
-            $clock3 = new TickingClock($i, new CarbonImmutable('2000-02-03 14:32'));
-            $this->assertEquals(new \DateTimeImmutable('2000-02-03 14:32'), $clock3->now());
-        }
+        // accepts carbon
+        $clock3 = new TickingClock($i, new CarbonImmutable('2000-02-03 14:32'));
+        $this->assertEquals(new \DateTimeImmutable('2000-02-03 14:32'), $clock3->now());
 
         // accepts carbon mutable
         $clock4 = new TickingClock($i, new Carbon('2258-03-14 12:34'));
