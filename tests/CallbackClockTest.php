@@ -71,11 +71,7 @@ final class CallbackClockTest extends TestCase
 
     public function testCorrectYield(): void
     {
-        if (method_exists($this, 'expectNotToPerformAssertions')) {
-            $this->expectNotToPerformAssertions(); // we're testing type assertions
-        } else {
-            $this->markTestIncomplete(); // just don't mark as risky
-        }
+        $this->expectNotToPerformAssertions(); // we're testing type assertions
 
         $innerGenerator = function () {
             while (true) {
