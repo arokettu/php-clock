@@ -11,12 +11,10 @@ use Psr\Clock\ClockInterface;
 
 class TickingClock implements ClockInterface
 {
-    /** @var DateInterval */
-    private $dateInterval;
-    /** @var DateTimeImmutable */
-    private $dateTime;
+    private DateInterval $dateInterval;
+    private DateTimeImmutable $dateTime;
 
-    public function __construct(DateInterval $dateInterval, DateTimeInterface $dateTime = null)
+    public function __construct(DateInterval $dateInterval, ?DateTimeInterface $dateTime = null)
     {
         $this->dateInterval = Helpers\DateTimeHelper::cloneInterval($dateInterval); // decouple mutable object
         $this->dateTime = $dateTime ?

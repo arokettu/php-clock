@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class MutableClockTest extends TestCase
 {
-    public function testTime()
+    public function testTime(): void
     {
         // accepts null, meaning now
         // three consecutive time generations should be t1 <= t2 <= t3
@@ -42,7 +42,7 @@ class MutableClockTest extends TestCase
         $this->assertEquals(new \DateTimeImmutable('2258-03-14 12:34'), $clock4->now());
     }
 
-    public function testTz()
+    public function testTz(): void
     {
         $clock1 = new MutableClock(new \DateTime('now', new \DateTimeZone('UTC')));
         self::assertEquals('UTC', $clock1->now()->getTimezone()->getName());
@@ -51,7 +51,7 @@ class MutableClockTest extends TestCase
         self::assertEquals('Europe/Tallinn', $clock2->now()->getTimezone()->getName());
     }
 
-    public function testModifyByValue()
+    public function testModifyByValue(): void
     {
         $clock = new MutableClock();
 
@@ -81,7 +81,7 @@ class MutableClockTest extends TestCase
         self::assertNotEquals($dateTime, $clock->now());
     }
 
-    public function testModifyByReference()
+    public function testModifyByReference(): void
     {
         $clock = new MutableClock();
 
@@ -109,14 +109,14 @@ class MutableClockTest extends TestCase
         self::assertNotEquals($dateTime, $clock->now());
     }
 
-    public function testModifyByReferenceOnlyMutable()
+    public function testModifyByReferenceOnlyMutable(): void
     {
         $this->expectException(\TypeError::class);
         $clock = new MutableClock();
         $clock->setInstance(new \DateTimeImmutable('2023-01-01 12:00'));
     }
 
-    public function testModifyByReferenceOnlyMutableCarbon()
+    public function testModifyByReferenceOnlyMutableCarbon(): void
     {
         if (!class_exists(CarbonImmutable::class)) {
             $this->markTestSkipped();
@@ -127,7 +127,7 @@ class MutableClockTest extends TestCase
         $clock->setInstance(new CarbonImmutable('2000-02-03 14:32'));
     }
 
-    public function testModifyInnerObject()
+    public function testModifyInnerObject(): void
     {
         $clock = new MutableClock(new \DateTime('2112-12-12'));
 
@@ -139,7 +139,7 @@ class MutableClockTest extends TestCase
         );
     }
 
-    public function testDeepCloning()
+    public function testDeepCloning(): void
     {
         $clock1 = new MutableClock();
         $clock2 = clone $clock1;

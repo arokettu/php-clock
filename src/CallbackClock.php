@@ -11,8 +11,7 @@ use ReflectionFunction;
 
 final class CallbackClock implements ClockInterface
 {
-    /** @var Closure */
-    private $callback;
+    private Closure $callback;
 
     public function __construct(Closure $callback)
     {

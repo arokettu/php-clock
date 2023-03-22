@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Arokettu\Clock\Tests;
 
 use Arokettu\Clock\TickingClock;
@@ -9,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class TickingClockTest extends TestCase
 {
-    public function testTime()
+    public function testTime(): void
     {
         $i = \DateInterval::createFromDateString('+10 min');
 
@@ -47,7 +49,7 @@ class TickingClockTest extends TestCase
         $this->assertEquals(new \DateTimeImmutable('2258-03-14 12:34'), $clock4->now());
     }
 
-    public function testTz()
+    public function testTz(): void
     {
         $i = \DateInterval::createFromDateString('+10 min');
 
@@ -58,7 +60,7 @@ class TickingClockTest extends TestCase
         self::assertEquals('Europe/Tallinn', $clock2->now()->getTimezone()->getName());
     }
 
-    public function testIntervals()
+    public function testIntervals(): void
     {
         $intervals = [
             '+1 min',

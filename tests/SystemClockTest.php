@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class SystemClockTest extends TestCase
 {
-    public function testTime()
+    public function testTime(): void
     {
         $clock = new SystemClock();
 
@@ -22,7 +22,7 @@ class SystemClockTest extends TestCase
         self::assertLessThanOrEqual($upperBoundary, $time);
     }
 
-    public function testTz()
+    public function testTz(): void
     {
         $clock1 = new SystemClock(new \DateTimeZone('UTC'));
         self::assertEquals('UTC', $clock1->now()->getTimezone()->getName());

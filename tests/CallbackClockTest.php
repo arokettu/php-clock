@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class CallbackClockTest extends TestCase
 {
-    public function testTimeWithClosure()
+    public function testTimeWithClosure(): void
     {
         $innerTime = new \DateTimeImmutable('1990-01-01 01:00', new \DateTimeZone('UTC'));
         $outerTime = $innerTime;
@@ -25,7 +25,7 @@ final class CallbackClockTest extends TestCase
         }
     }
 
-    public function testTimeWithGenerator()
+    public function testTimeWithGenerator(): void
     {
         $innerTime = new \DateTimeImmutable('1990-01-01 01:00', new \DateTimeZone('UTC'));
         $outerTime = $innerTime;
@@ -43,7 +43,7 @@ final class CallbackClockTest extends TestCase
         }
     }
 
-    public function testIncorrectReturn()
+    public function testIncorrectReturn(): void
     {
         $this->expectException(\TypeError::class);
         $clock = new CallbackClock(function () {
@@ -52,7 +52,7 @@ final class CallbackClockTest extends TestCase
         $clock->now();
     }
 
-    public function testIncorrectYield()
+    public function testIncorrectYield(): void
     {
         $this->expectException(\TypeError::class);
 
@@ -69,7 +69,7 @@ final class CallbackClockTest extends TestCase
         $clock->now();
     }
 
-    public function testCorrectYield()
+    public function testCorrectYield(): void
     {
         if (method_exists($this, 'expectNotToPerformAssertions')) {
             $this->expectNotToPerformAssertions(); // we're testing type assertions

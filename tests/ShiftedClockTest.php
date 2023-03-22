@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ShiftedClockTest extends TestCase
 {
-    public function testTime()
+    public function testTime(): void
     {
         $clock = new ShiftedClock(\DateInterval::createFromDateString('+1 day'));
 
@@ -22,7 +22,7 @@ class ShiftedClockTest extends TestCase
         self::assertLessThanOrEqual($upperBoundary, $time);
     }
 
-    public function testTz()
+    public function testTz(): void
     {
         $shift = \DateInterval::createFromDateString('-1 year');
 

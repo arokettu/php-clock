@@ -10,10 +10,9 @@ use Psr\Clock\ClockInterface;
 
 final class SystemClock implements ClockInterface
 {
-    /** @var DateTimeZone|null */
-    private $timeZone;
+    private ?DateTimeZone $timeZone;
 
-    public function __construct(DateTimeZone $timeZone = null)
+    public function __construct(?DateTimeZone $timeZone = null)
     {
         $this->timeZone = $timeZone;
     }

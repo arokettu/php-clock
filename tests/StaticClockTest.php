@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class StaticClockTest extends TestCase
 {
-    public function testTime()
+    public function testTime(): void
     {
         // accepts null, meaning now
         // three consecutive time generations should be t1 <= t2 <= t3
@@ -42,7 +42,7 @@ class StaticClockTest extends TestCase
         $this->assertEquals(new \DateTimeImmutable('2258-03-14 12:34'), $clock4->now());
     }
 
-    public function testModify()
+    public function testModify(): void
     {
         $clock = new StaticClock();
 
@@ -65,7 +65,7 @@ class StaticClockTest extends TestCase
         $this->assertEquals(new \DateTimeImmutable('2258-03-14 12:34'), $clock->now());
     }
 
-    public function testTz()
+    public function testTz(): void
     {
         $clock1 = new StaticClock(new \DateTime('now', new \DateTimeZone('UTC')));
         self::assertEquals('UTC', $clock1->now()->getTimezone()->getName());

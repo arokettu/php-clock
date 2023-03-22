@@ -10,10 +10,9 @@ use Psr\Clock\ClockInterface;
 
 final class StaticClock implements ClockInterface
 {
-    /** @var DateTimeImmutable */
-    private $dateTime;
+    private DateTimeImmutable $dateTime;
 
-    public function __construct(DateTimeInterface $dateTime = null)
+    public function __construct(?DateTimeInterface $dateTime = null)
     {
         $this->dateTime = $dateTime ?
             Helpers\DateTimeHelper::createImmutableFromInterface($dateTime) :
