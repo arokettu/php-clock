@@ -41,11 +41,11 @@
         "psr/clock": "^1.0"
     },
     "require-dev": {
-        "nesbot/carbon": "^1 | ^2",
-        "phpunit/phpunit": ">= 6.0.0 < 10",
+        "nesbot/carbon": "^2",
+        "phpunit/phpunit": "^10",
         "sandfox.dev/code-standard": "^1.2022.06.29",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^4 | ^5"
+        "vimeo/psalm": "^5"
     },
     "provide": {
         "psr/clock-implementation": "1.0"

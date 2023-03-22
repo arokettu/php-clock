@@ -29,6 +29,7 @@ Documentation
    basic
    clocks
    system-clock
+   upgrade
 
 License
 =======
