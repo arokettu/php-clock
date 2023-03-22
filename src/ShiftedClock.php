@@ -24,6 +24,6 @@ final class ShiftedClock implements ClockInterface
 
     public function now(): DateTimeImmutable
     {
-        return (new DateTimeImmutable('new', $this->timeZone))->add($this->dateInterval);
+        return (new DateTimeImmutable('now', $this->timeZone))->add($this->dateInterval);
     }
 }
