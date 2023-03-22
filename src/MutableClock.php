@@ -36,6 +36,11 @@ final class MutableClock implements ClockInterface
         return $this;
     }
 
+    public function setInstance(DateTime $dateTime)
+    {
+        $this->dateTime = $dateTime; // no decoupling
+    }
+
     // deep cloning
     public function __clone()
     {
@@ -48,21 +53,16 @@ final class MutableClock implements ClockInterface
             return $this->dateTime;
         }
 
-        throw new InvalidArgumentException('No such field: ' . $name);
+        throw new InvalidArgumentException('No such field: ' . $name); // @codeCoverageIgnore
     }
 
     public function __set(string $name, $value)
     {
         if ($name === 'dateTime') {
-            $this->setDateTime($value);
+            $this->setInstance($value);
             return;
         }
 
-        throw new InvalidArgumentException('No such field: ' . $name);
-    }
-
-    private function setDateTime(DateTime $dateTime)
-    {
-        $this->dateTime = $dateTime; // no decoupling
+        throw new InvalidArgumentException('No such field: ' . $name); // @codeCoverageIgnore
     }
 }

@@ -40,9 +40,12 @@ final class DateTimeHelper
             return DateTime::createFromImmutable($dateTime);
         }
 
+        // for PHP < 7.3
+        // @codeCoverageIgnoreStart
         $dt = DateTime::createFromFormat('U u', $dateTime->format('U u'));
         $dt->setTimezone($dateTime->getTimezone());
 
         return $dt;
+        // @codeCoverageIgnoreEnd
     }
 }

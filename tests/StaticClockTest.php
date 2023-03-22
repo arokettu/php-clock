@@ -49,7 +49,7 @@ class StaticClockTest extends TestCase
         $this->assertEquals(new \DateTimeImmutable('2023-01-01 12:00'), $clock->now());
 
         // accepts mutable
-        $clock->set(new \DateTimeImmutable('2050-07-25 16:00'));
+        $clock->set(new \DateTime('2050-07-25 16:00'));
         $this->assertEquals(new \DateTimeImmutable('2050-07-25 16:00'), $clock->now());
 
         // accepts carbon
