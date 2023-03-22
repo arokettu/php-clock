@@ -51,4 +51,41 @@ final class CallbackClockTest extends TestCase
         });
         $clock->now();
     }
+
+    public function testIncorrectYield()
+    {
+        $this->expectException(\TypeError::class);
+
+        $innerGenerator = function () {
+            while (true) {
+                yield new \DateTimeImmutable();
+            }
+        };
+        $outerGenerator = function () use ($innerGenerator) {
+            yield $innerGenerator();
+        };
+
+        $clock = new CallbackClock($outerGenerator);
+        $clock->now();
+    }
+
+    public function testCorrectYield()
+    {
+        $this->expectNotToPerformAssertions(); // we're testing type assertions
+
+        $innerGenerator = function () {
+            while (true) {
+                yield new \DateTimeImmutable();
+            }
+        };
+        $outerGenerator = function () use ($innerGenerator) {
+            yield from $innerGenerator();
+        };
+
+        $clock = new CallbackClock($outerGenerator);
+
+        for ($i = 0; $i < 10; $i++) {
+            $clock->now();
+        }
+    }
 }

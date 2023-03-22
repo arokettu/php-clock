@@ -25,7 +25,7 @@ final class CallbackClock implements ClockInterface
 
         // if the closure creates a generator, use it
         if ($value instanceof Generator) {
-            $this->callback = function () use ($value) {
+            $this->callback = function () use ($value): DateTimeImmutable {
                 $date = $value->current();
                 $value->next();
                 return $date;
