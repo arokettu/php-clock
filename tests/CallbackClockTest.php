@@ -9,13 +9,31 @@ use PHPUnit\Framework\TestCase;
 
 final class CallbackClockTest extends TestCase
 {
-    public function testTime()
+    public function testTimeWithClosure()
     {
         $innerTime = new \DateTimeImmutable('1990-01-01 01:00', new \DateTimeZone('UTC'));
         $outerTime = $innerTime;
 
         $clock = new CallbackClock(function () use (&$innerTime) {
             return $innerTime = $innerTime->modify('+1 hour');
+        });
+
+        for ($i = 0; $i < 10; $i++) {
+            $outerTime = $outerTime->modify('+1 hour');
+
+            self::assertEquals($outerTime, $clock->now());
+        }
+    }
+
+    public function testTimeWithGenerator()
+    {
+        $innerTime = new \DateTimeImmutable('1990-01-01 01:00', new \DateTimeZone('UTC'));
+        $outerTime = $innerTime;
+
+        $clock = new CallbackClock(function () use ($innerTime) {
+            while (true) {
+                yield $innerTime = $innerTime->modify('+1 hour');
+            }
         });
 
         for ($i = 0; $i < 10; $i++) {
