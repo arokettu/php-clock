@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Arokettu\Clock\Helpers;
 
+use DateInterval;
 use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
@@ -47,5 +48,22 @@ final class DateTimeHelper
 
         return $dt;
         // @codeCoverageIgnoreEnd
+    }
+
+    public static function cloneInterval(DateInterval $interval): DateInterval
+    {
+        if (PHP_VERSION_ID >= 70107) {
+            return clone $interval;
+        }
+
+        // https://bugs.php.net/bug.php?id=50559
+
+        $newInterval = new DateInterval('PT0S');
+
+        foreach (get_object_vars($interval) as $var => $value) {
+            $newInterval->$var = $value;
+        }
+
+        return $newInterval;
     }
 }
