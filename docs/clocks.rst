@@ -66,6 +66,32 @@ Returns a specific time that can be changed manually::
 MutableClock
 ------------
 
+``Arokettu\Clock\MutableClock``
+
+A clock that exposes a regular mutable DateTime that can be manipulated::
+
+    <?php
+
+    // initialize by 'now'
+    $clock = new \Arokettu\Clock\MutableClock();
+    // initialize by date time
+    $clock = new \Arokettu\Clock\MutableClock(new DateTimeImmutable());
+    // attach to a DateTime instance
+    $dateTime = new DateTime();
+    $clock = (new \Arokettu\Clock\MutableClock())->setInstance($dateTime);
+
+    // use the attached instance
+    $dateTime->setDate(2022, 03, 03);
+    $dateTime->setTime(12, 00, 00);
+
+    $clock->now(); // 2022-03-03T12:00:00
+
+    // or use the exposed property
+
+    $clock->dateTime->modify('+1 day');
+
+    $clock->now(); // 2022-03-03T12:00:00
+
 TickingClock
 ------------
 
