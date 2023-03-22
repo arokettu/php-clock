@@ -16,6 +16,11 @@ A collection of clock abstraction classes for [PSR-20].
 composer require arokettu/clock
 ```
 
+Supported versions:
+
+* 1.x (LTS-ish, PHP 7.0+)
+* 2.x (current, PHP 8.0+)
+
 ## Example
 
 ```php
