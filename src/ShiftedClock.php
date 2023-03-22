@@ -16,7 +16,7 @@ final class ShiftedClock implements ClockInterface
 
     public function __construct(DateInterval $dateInterval, ?DateTimeZone $timeZone = null)
     {
-        $this->dateInterval = Helpers\DateTimeHelper::cloneInterval($dateInterval); // decouple mutable object
+        $this->dateInterval = clone $dateInterval; // decouple mutable object
         $this->timeZone = $timeZone;
     }
 
