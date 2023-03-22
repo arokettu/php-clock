@@ -31,9 +31,11 @@ class MutableClockTest extends TestCase
         $clock2 = new MutableClock(new \DateTimeImmutable('2050-07-25 16:00'));
         $this->assertEquals(new \DateTimeImmutable('2050-07-25 16:00'), $clock2->now());
 
-        // accepts carbon
-        $clock3 = new MutableClock(new CarbonImmutable('2000-02-03 14:32'));
-        $this->assertEquals(new \DateTimeImmutable('2000-02-03 14:32'), $clock3->now());
+        if (class_exists(CarbonImmutable::class)) {
+            // accepts carbon
+            $clock3 = new MutableClock(new CarbonImmutable('2000-02-03 14:32'));
+            $this->assertEquals(new \DateTimeImmutable('2000-02-03 14:32'), $clock3->now());
+        }
 
         // accepts carbon mutable
         $clock4 = new MutableClock(new Carbon('2258-03-14 12:34'));
@@ -61,9 +63,11 @@ class MutableClockTest extends TestCase
         $clock->set(new \DateTime('2050-07-25 16:00'));
         $this->assertEquals(new \DateTimeImmutable('2050-07-25 16:00'), $clock->now());
 
-        // accepts carbon
-        $clock->set(new CarbonImmutable('2000-02-03 14:32'));
-        $this->assertEquals(new \DateTimeImmutable('2000-02-03 14:32'), $clock->now());
+        if (class_exists(CarbonImmutable::class)) {
+            // accepts carbon
+            $clock->set(new CarbonImmutable('2000-02-03 14:32'));
+            $this->assertEquals(new \DateTimeImmutable('2000-02-03 14:32'), $clock->now());
+        }
 
         // accepts carbon mutable
         $clock->set(new Carbon('2258-03-14 12:34'));
@@ -114,6 +118,10 @@ class MutableClockTest extends TestCase
 
     public function testModifyByReferenceOnlyMutableCarbon()
     {
+        if (!class_exists(CarbonImmutable::class)) {
+            $this->markTestSkipped();
+        }
+
         $this->expectException(\TypeError::class);
         $clock = new MutableClock();
         $clock->setInstance(new CarbonImmutable('2000-02-03 14:32'));
