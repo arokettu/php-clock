@@ -36,9 +36,10 @@ final class MutableClock implements ClockInterface
         return $this;
     }
 
-    public function setInstance(DateTime $dateTime)
+    public function setInstance(DateTime $dateTime): self
     {
         $this->dateTime = $dateTime; // no decoupling
+        return $this;
     }
 
     // deep cloning
