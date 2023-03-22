@@ -15,7 +15,7 @@ final class StaticClock implements ClockInterface
     public function __construct(?DateTimeInterface $dateTime = null)
     {
         $this->dateTime = $dateTime ?
-            Helpers\DateTimeHelper::createImmutableFromInterface($dateTime) :
+            DateTimeImmutable::createFromInterface($dateTime) :
             new DateTimeImmutable('now');
     }
 
@@ -26,7 +26,7 @@ final class StaticClock implements ClockInterface
 
     public function set(DateTimeInterface $dateTime): self
     {
-        $this->dateTime = Helpers\DateTimeHelper::createImmutableFromInterface($dateTime);
+        $this->dateTime = DateTimeImmutable::createFromInterface($dateTime);
         return $this;
     }
 }

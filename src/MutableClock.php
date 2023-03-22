@@ -36,7 +36,7 @@ final class MutableClock implements ClockInterface
     }
 
     // deep cloning
-    public function __clone(): void
+    public function __clone()
     {
         $this->dateTime = clone $this->dateTime;
     }

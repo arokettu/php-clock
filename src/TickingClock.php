@@ -18,7 +18,7 @@ class TickingClock implements ClockInterface
     {
         $this->dateInterval = clone $dateInterval; // decouple mutable object
         $this->dateTime = $dateTime ?
-            Helpers\DateTimeHelper::createImmutableFromInterface($dateTime) :
+            DateTimeImmutable::createFromInterface($dateTime) :
             new DateTimeImmutable('now');
     }
 
