@@ -11,7 +11,8 @@
     ],
     "config": {
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "kylekatarnls/update-helper": false
         },
         "sort-packages": true
     },
@@ -34,7 +35,7 @@
         "phpunit/phpunit": ">= 6.0.0 < 10",
         "sandfox.dev/code-standard": "^1.2022.06.29",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^3 | ^4 | ^5"
+        "vimeo/psalm": "^4 | ^5"
     },
     "provide": {
         "psr/clock-implementation": "1.0"
