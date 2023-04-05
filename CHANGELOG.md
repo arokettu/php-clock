@@ -13,6 +13,12 @@ Forked from 1.0.0
 
 ## 1.x
 
+### 1.1.1
+
+*Apr 5, 2023*
+
+Fix timezone being lost in the rounding clock
+
 ### 1.1.0
 
 *Apr 5, 2023*
