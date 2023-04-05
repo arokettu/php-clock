@@ -46,7 +46,7 @@ class RoundingClockTest extends TestCase
         self::assertEquals('2023-01-02T00:00:00.000000+00:00', $yIso->now()->format($f)); // Jan 2 was Monday
     }
 
-    public function testRoundingCustomTz()
+    public function testRoundingCustomTz(): void
     {
         $c = new StaticClock(
             (new \DateTimeImmutable('2023-04-05 03:26:08.012340 UTC'))
