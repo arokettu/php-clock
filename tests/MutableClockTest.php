@@ -28,7 +28,7 @@ class MutableClockTest extends TestCase
         $this->assertEquals(new \DateTimeImmutable('2023-01-01 12:00'), $clock1->now());
 
         // accepts mutable
-        $clock2 = new MutableClock(new \DateTimeImmutable('2050-07-25 16:00'));
+        $clock2 = new MutableClock(new \DateTime('2050-07-25 16:00'));
         $this->assertEquals(new \DateTimeImmutable('2050-07-25 16:00'), $clock2->now());
 
         // accepts carbon
