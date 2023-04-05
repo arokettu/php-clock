@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class RoundingClockTest extends TestCase
 {
-    public function testRounding()
+    public function testRounding(): void
     {
         $c = new StaticClock(new \DateTimeImmutable('2023-04-05 03:26:08.012340 UTC'));
         $f = "Y-m-d\\TH:i:s.uP"; // like RFC3339_EXTENDED but with microseconds
