@@ -44,18 +44,6 @@ coverage:
     - chmod +x codecov
     - ./codecov -t $CODECOV_TOKEN
 
-# lowest version
-test-7.0:
-  extends: .test
-  stage: test
-  image: php:7.0
-  script:
-    # not sure why version resolution glitches only on 7.0
-    - composer config version 1.99.0
-    # 7.0 specific dependency glitch
-    - composer remove --dev vimeo/psalm
-    - vendor/bin/phpunit
-
 test-7.1:
   extends: .test
   stage: test
