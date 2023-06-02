@@ -19,7 +19,7 @@ Installation
 Documentation
 =============
 
-SystemClock class extracted and packaged as ``Arokettu\SystemClock\SystemClock``
+SystemClock class extracted and packaged.
 
 The smallest thing you need for PSR-20.
 

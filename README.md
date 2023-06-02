@@ -26,7 +26,7 @@ Supported versions:
 ```php
 <?php
 
-$clock = new \Arokettu\SystemClock\SystemClock();
+$clock = new \Arokettu\Clock\SystemClock();
 $clockPsrAwareValidator->isValid($clock);
 ```
 
@@ -35,7 +35,7 @@ For a specific example, `lcobucci/jwt`:
 ```php
 <?php
 
-use Arokettu\SystemClock\SystemClock;
+use Arokettu\Clock\SystemClock;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 

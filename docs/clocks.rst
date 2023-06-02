@@ -14,7 +14,7 @@ SystemClock
 ``Arokettu\Clock\SystemClock``
 
 .. note::
-    Can be installed separately as ``arokettu/system-clock`` where the class name is ``Arokettu\SystemClock\SystemClock``.
+    Can be installed separately as ``arokettu/system-clock``.
     See :ref:`system_clock_package`.
 
 A basic system clock::
