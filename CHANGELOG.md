@@ -2,6 +2,13 @@
 
 ## 2.x
 
+### 2.2.0
+
+*Jun 2, 2023*
+
+* Requires `arokettu/system-clock` for deduplication purpose.
+  Local implementation of SystemClock was removed.
+
 ### 2.1.0
 
 *Apr 5, 2023*
