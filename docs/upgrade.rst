@@ -14,4 +14,7 @@ The major release was to keep supporting PHP 7.0 in parallel.
 arokettu/system-clock
 =====================
 
-There are no major versions to upgrade yet.
+1.x to 2.x
+----------
+
+* ``Arokettu\SystemClock\SystemClock`` was renamed to ``Arokettu\Clock\SystemClock``
