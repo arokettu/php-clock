@@ -60,6 +60,7 @@ Available clock classes:
 * MutableClock. Based on mutable DateTime class
 * TickingClock. Clock that advances an interval every call
 * CallbackClock. A wrapper for a closure that also supports generator closures
+* RoundingClock. A clock wrapper that rounds time to a certain precision
 
 Read full documentation here: <https://sandfox.dev/php/clock.html>
 
