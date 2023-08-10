@@ -12,14 +12,14 @@ class RoundingClockTest extends TestCase
 {
     public function testRounding(): void
     {
-        $c = new StaticClock(new \DateTimeImmutable('2023-04-05 03:26:08.012340 UTC'));
+        $c = new StaticClock(new \DateTimeImmutable('2023-04-05 03:26:08.123456 UTC'));
         $f = "Y-m-d\\TH:i:s.uP"; // like RFC3339_EXTENDED but with microseconds
 
         $mcs = new RoundingClock($c, RoundingClock::ROUND_MICROSECONDS);
-        self::assertEquals('2023-04-05T03:26:08.012340+00:00', $mcs->now()->format($f));
+        self::assertEquals('2023-04-05T03:26:08.123456+00:00', $mcs->now()->format($f));
 
         $ms = new RoundingClock($c, RoundingClock::ROUND_MILLISECONDS);
-        self::assertEquals('2023-04-05T03:26:08.012000+00:00', $ms->now()->format($f));
+        self::assertEquals('2023-04-05T03:26:08.123000+00:00', $ms->now()->format($f));
 
         $s = new RoundingClock($c, RoundingClock::ROUND_SECONDS);
         self::assertEquals('2023-04-05T03:26:08.000000+00:00', $s->now()->format($f));
@@ -49,16 +49,16 @@ class RoundingClockTest extends TestCase
     public function testRoundingCustomTz(): void
     {
         $c = new StaticClock(
-            (new \DateTimeImmutable('2023-04-05 03:26:08.012340 UTC'))
+            (new \DateTimeImmutable('2023-04-05 03:26:08.123456 UTC'))
                 ->setTimezone(new \DateTimeZone('Asia/Tokyo'))
         );
         $f = "Y-m-d\\TH:i:s.uP"; // like RFC3339_EXTENDED but with microseconds
 
         $mcs = new RoundingClock($c, RoundingClock::ROUND_MICROSECONDS);
-        self::assertEquals('2023-04-05T12:26:08.012340+09:00', $mcs->now()->format($f));
+        self::assertEquals('2023-04-05T12:26:08.123456+09:00', $mcs->now()->format($f));
 
         $ms = new RoundingClock($c, RoundingClock::ROUND_MILLISECONDS);
-        self::assertEquals('2023-04-05T12:26:08.012000+09:00', $ms->now()->format($f));
+        self::assertEquals('2023-04-05T12:26:08.123000+09:00', $ms->now()->format($f));
 
         $s = new RoundingClock($c, RoundingClock::ROUND_SECONDS);
         self::assertEquals('2023-04-05T12:26:08.000000+09:00', $s->now()->format($f));

@@ -175,13 +175,10 @@ A clock that can round another clock to a certain precision::
 
     // round to milliseconds
     $clock = new RoundingClock($innerClock, RoundingClock::ROUND_MILLISECONDS);
-
     echo $clock->now()->format('c \\m\\s: u'), PHP_EOL; // 2012-03-04T05:06:07+00:00 ms: 899000
 
     // round to weeks
     $clock = new RoundingClock($innerClock, RoundingClock::ROUND_WEEKS);
-
-    // or use the exposed property
     echo $clock->now()->format('c'), PHP_EOL; // 2012-02-27T00:00:00+00:00, nearest Monday
 
 Supported precisions:
