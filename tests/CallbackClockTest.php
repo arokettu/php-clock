@@ -71,12 +71,6 @@ final class CallbackClockTest extends TestCase
 
     public function testCorrectYield()
     {
-        if (method_exists($this, 'expectNotToPerformAssertions')) {
-            $this->expectNotToPerformAssertions(); // we're testing type assertions
-        } else {
-            $this->markTestIncomplete(); // just don't mark as risky
-        }
-
         $innerGenerator = function () {
             while (true) {
                 yield new \DateTimeImmutable();
@@ -89,7 +83,7 @@ final class CallbackClockTest extends TestCase
         $clock = new CallbackClock($outerGenerator);
 
         for ($i = 0; $i < 10; $i++) {
-            $clock->now();
+            self::assertInstanceOf(\DateTimeImmutable::class, $clock->now());
         }
     }
 }
