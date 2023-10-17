@@ -7,6 +7,9 @@ namespace Arokettu\Clock;
 use DateTimeImmutable;
 use Psr\Clock\ClockInterface;
 
+/**
+ * @template T
+ */
 final class RoundingClock implements ClockInterface
 {
     const ROUND_MICROSECONDS = 0;
@@ -88,5 +91,13 @@ final class RoundingClock implements ClockInterface
         $y = \intval($now->format('Y'));
 
         return $now->setDate($y, $m, 1);
+    }
+
+    /**
+     * @return T|ClockInterface
+     */
+    public function getInnerClock(): ClockInterface
+    {
+        return $this->innerClock;
     }
 }
