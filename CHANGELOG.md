@@ -2,6 +2,12 @@
 
 ## 1.x
 
+### 1.3.0
+
+*Oct 18, 2023*
+
+* Added `getInnerClock()` to `RoundingClock`
+
 ### 1.2.0
 
 *Jun 2, 2023*
