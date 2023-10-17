@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Arokettu\Clock\Tests;
 
 use Arokettu\Clock\TickingClock;
