@@ -86,7 +86,7 @@ class RoundingClockTest extends TestCase
         self::assertEquals('2023-01-02T00:00:00.000000+09:00', $yIso->now()->format($f)); // Jan 2 was Monday
     }
 
-    public function testInnerClock()
+    public function testInnerClock(): void
     {
         $staticClock = new StaticClock();
         $c1 = new RoundingClock($staticClock, RoundingClock::ROUND_DAYS);
