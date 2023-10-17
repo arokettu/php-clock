@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Arokettu\Clock\Tests;
 
+use Arokettu\Clock\MutableClock;
 use Arokettu\Clock\RoundingClock;
 use Arokettu\Clock\StaticClock;
 use PHPUnit\Framework\TestCase;
@@ -83,5 +84,20 @@ class RoundingClockTest extends TestCase
 
         $yIso = new RoundingClock($c, RoundingClock::ROUND_ISO_YEARS);
         self::assertEquals('2023-01-02T00:00:00.000000+09:00', $yIso->now()->format($f)); // Jan 2 was Monday
+    }
+
+    public function testInnerClock()
+    {
+        $staticClock = new StaticClock();
+        $c1 = new RoundingClock($staticClock, RoundingClock::ROUND_DAYS);
+        self::assertSame($staticClock, $c1->getInnerClock()); // same instance
+
+        $mutableClock = new MutableClock(new \DateTime('2020-06-06 12:12:12 UTC'));
+        /** @var RoundingClock<MutableClock> $c2 */
+        $c2 = new RoundingClock($mutableClock, RoundingClock::ROUND_DAYS);
+        self::assertEquals('2020-06-06T00:00:00+00:00', $c2->now()->format('c'));
+        // if the inner clock is mutable, it should change
+        $c2->getInnerClock()->dateTime->modify('+1 month +2 weeks');
+        self::assertEquals('2020-07-20T00:00:00+00:00', $c2->now()->format('c'));
     }
 }
