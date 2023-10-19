@@ -93,7 +93,6 @@ class RoundingClockTest extends TestCase
         self::assertSame($staticClock, $c1->getInnerClock()); // same instance
 
         $mutableClock = new MutableClock(new \DateTime('2020-06-06 12:12:12 UTC'));
-        /** @var RoundingClock<MutableClock> $c2 */
         $c2 = new RoundingClock($mutableClock, RoundingClock::ROUND_DAYS);
         self::assertEquals('2020-06-06T00:00:00+00:00', $c2->now()->format('c'));
         // if the inner clock is mutable, it should change

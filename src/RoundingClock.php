@@ -8,7 +8,7 @@ use DateTimeImmutable;
 use Psr\Clock\ClockInterface;
 
 /**
- * @template T
+ * @template T of ClockInterface
  */
 final class RoundingClock implements ClockInterface
 {
@@ -23,6 +23,9 @@ final class RoundingClock implements ClockInterface
     public const ROUND_YEARS = 8;
     public const ROUND_ISO_YEARS = 9;
 
+    /**
+     * @param T $innerClock
+     */
     public function __construct(
         private ClockInterface $innerClock,
         private int $rounding,
@@ -68,7 +71,7 @@ final class RoundingClock implements ClockInterface
     }
 
     /**
-     * @return T|ClockInterface
+     * @return T
      */
     public function getInnerClock(): ClockInterface
     {
