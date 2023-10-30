@@ -86,7 +86,7 @@ class RoundingClockTest extends TestCase
         self::assertEquals('2023-01-02T00:00:00.000000+09:00', $yIso->now()->format($f)); // Jan 2 was Monday
     }
 
-    public function testRoundingFactory()
+    public function testRoundingFactory(): void
     {
         $c = new StaticClock(new \DateTimeImmutable('2023-04-05 03:26:08.123456 UTC'));
         $f = "Y-m-d\\TH:i:s.uP"; // like RFC3339_EXTENDED but with microseconds

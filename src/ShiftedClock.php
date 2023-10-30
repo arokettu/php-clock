@@ -20,7 +20,7 @@ final class ShiftedClock implements ClockInterface
         $this->timeZone = $timeZone;
     }
 
-    public static function fromDateString(string $dateInterval, DateTimeZone $timeZone = null): self
+    public static function fromDateString(string $dateInterval, ?DateTimeZone $timeZone = null): self
     {
         return new self(DateInterval::createFromDateString($dateInterval), $timeZone);
     }

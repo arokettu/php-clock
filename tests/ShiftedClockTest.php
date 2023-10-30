@@ -22,7 +22,7 @@ class ShiftedClockTest extends TestCase
         self::assertLessThanOrEqual($upperBoundary, $time);
     }
 
-    public function testFactory()
+    public function testFactory(): void
     {
         $clock = ShiftedClock::fromDateString('+1 day');
 
@@ -46,7 +46,7 @@ class ShiftedClockTest extends TestCase
         self::assertEquals('Europe/Tallinn', $clock2->now()->getTimezone()->getName());
     }
 
-    public function testTzFactory()
+    public function testTzFactory(): void
     {
         $clock1 = ShiftedClock::fromDateString('-1 year', new \DateTimeZone('UTC'));
         self::assertEquals('UTC', $clock1->now()->getTimezone()->getName());

@@ -13,14 +13,14 @@ use DateTimeZone;
  */
 trait CreateFromFactories
 {
-    abstract public function __construct(DateTimeInterface $dateTime = null);
+    abstract public function __construct(?DateTimeInterface $dateTime = null);
 
-    public static function fromDateString(string $datetime, DateTimeZone $timeZone = null): self
+    public static function fromDateString(string $datetime, ?DateTimeZone $timeZone = null): self
     {
         return new self(new DateTimeImmutable($datetime, $timeZone));
     }
 
-    public static function fromTimestamp(int $timestamp, DateTimeZone $timeZone = null): self
+    public static function fromTimestamp(int $timestamp, ?DateTimeZone $timeZone = null): self
     {
         $dt = DateTimeImmutable::createFromFormat('U', \strval($timestamp));
         if ($timeZone) {
