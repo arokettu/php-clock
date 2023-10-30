@@ -45,6 +45,11 @@ class TickingClockTest extends TestCase
         // accepts carbon mutable
         $clock4 = new TickingClock($i, new Carbon('2258-03-14 12:34'));
         $this->assertEquals(new \DateTimeImmutable('2258-03-14 12:34'), $clock4->now());
+
+        // from strings
+        $clock5 = TickingClock::fromDateString('+15 minutes', '2020-02-02 6:00');
+        $this->assertEquals(new \DateTimeImmutable('2020-02-02 6:00'), $clock5->now());
+        $this->assertEquals(new \DateTimeImmutable('2020-02-02 6:15'), $clock5->now());
     }
 
     public function testTz(): void
@@ -56,6 +61,11 @@ class TickingClockTest extends TestCase
 
         $clock2 = new TickingClock($i, new Carbon('now', new \DateTimeZone('Europe/Tallinn')));
         self::assertEquals('Europe/Tallinn', $clock2->now()->getTimezone()->getName());
+
+        // from strings
+        $clock3 = TickingClock::fromDateString('+15 minutes', '2020-02-02 6:00', new \DateTimeZone('Asia/Jakarta'));
+        $this->assertEquals(new \DateTimeImmutable('2020-02-02 6:00 Asia/Jakarta'), $clock3->now());
+        $this->assertEquals(new \DateTimeImmutable('2020-02-02 6:15 Asia/Jakarta'), $clock3->now());
     }
 
     public function testIntervals(): void

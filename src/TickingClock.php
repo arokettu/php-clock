@@ -7,6 +7,7 @@ namespace Arokettu\Clock;
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeInterface;
+use DateTimeZone;
 use Psr\Clock\ClockInterface;
 
 class TickingClock implements ClockInterface
@@ -20,6 +21,17 @@ class TickingClock implements ClockInterface
         $this->dateTime = $dateTime ?
             DateTimeImmutable::createFromInterface($dateTime) :
             new DateTimeImmutable('now');
+    }
+
+    public static function fromDateString(
+        string $dateInterval,
+        string $dateTime = 'now',
+        DateTimeZone $timeZone = null
+    ): self {
+        return new self(
+            DateInterval::createFromDateString($dateInterval),
+            new DateTimeImmutable($dateTime, $timeZone)
+        );
     }
 
     public function now(): DateTimeImmutable

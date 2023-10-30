@@ -86,6 +86,42 @@ class RoundingClockTest extends TestCase
         self::assertEquals('2023-01-02T00:00:00.000000+09:00', $yIso->now()->format($f)); // Jan 2 was Monday
     }
 
+    public function testRoundingFactory()
+    {
+        $c = new StaticClock(new \DateTimeImmutable('2023-04-05 03:26:08.123456 UTC'));
+        $f = "Y-m-d\\TH:i:s.uP"; // like RFC3339_EXTENDED but with microseconds
+
+        $mcs = RoundingClock::toMicroseconds($c);
+        self::assertEquals('2023-04-05T03:26:08.123456+00:00', $mcs->now()->format($f));
+
+        $ms = RoundingClock::toMilliseconds($c);
+        self::assertEquals('2023-04-05T03:26:08.123000+00:00', $ms->now()->format($f));
+
+        $s = RoundingClock::toSeconds($c);
+        self::assertEquals('2023-04-05T03:26:08.000000+00:00', $s->now()->format($f));
+
+        $min = RoundingClock::toMinutes($c);
+        self::assertEquals('2023-04-05T03:26:00.000000+00:00', $min->now()->format($f));
+
+        $h = RoundingClock::toHours($c);
+        self::assertEquals('2023-04-05T03:00:00.000000+00:00', $h->now()->format($f));
+
+        $d = RoundingClock::toDays($c);
+        self::assertEquals('2023-04-05T00:00:00.000000+00:00', $d->now()->format($f));
+
+        $w = RoundingClock::toWeeks($c);
+        self::assertEquals('2023-04-03T00:00:00.000000+00:00', $w->now()->format($f)); // 3 was Monday
+
+        $mon = RoundingClock::toMonths($c);
+        self::assertEquals('2023-04-01T00:00:00.000000+00:00', $mon->now()->format($f));
+
+        $y = RoundingClock::toYears($c);
+        self::assertEquals('2023-01-01T00:00:00.000000+00:00', $y->now()->format($f));
+
+        $yIso = RoundingClock::toIsoYears($c);
+        self::assertEquals('2023-01-02T00:00:00.000000+00:00', $yIso->now()->format($f)); // Jan 2 was Monday
+    }
+
     public function testInnerClock(): void
     {
         $staticClock = new StaticClock();

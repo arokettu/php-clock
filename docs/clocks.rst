@@ -40,6 +40,8 @@ A system clock with a constant time shift::
     $clock = new \Arokettu\Clock\ShiftedClock($shift);
     // optionally with a timezone
     $clock = new \Arokettu\Clock\ShiftedClock($shift, new DateTimeZone('Europe/Tallinn'));
+    // shorter form
+    $clock = \Arokettu\Clock\ShiftedClock::fromDateString('1 week ago', new DateTimeZone('Europe/Tallinn'));
 
     $clock->now(); // exactly a week ago
 
@@ -58,6 +60,10 @@ Returns a specific time that can be changed manually::
     $clock = new \Arokettu\Clock\StaticClock(); // 'now'
     // or a specific time
     $clock = new \Arokettu\Clock\StaticClock(new DateTimeImmutable('2007-01-01'));
+    // or short
+    $clock = \Arokettu\Clock\StaticClock::fromDateString('2007-01-01');
+    // or timestamp
+    $clock = \Arokettu\Clock\StaticClock::fromTimestamp(1167609600);
 
     $clock->now(); // happy new 2007
 
@@ -76,6 +82,10 @@ A clock that exposes a regular mutable DateTime that can be manipulated::
     $clock = new \Arokettu\Clock\MutableClock();
     // initialize by date time
     $clock = new \Arokettu\Clock\MutableClock(new DateTimeImmutable());
+    // initialize by expression
+    $clock = \Arokettu\Clock\MutableClock::fromDateString('yesterday');
+    // initialize by timestamp
+    $clock = \Arokettu\Clock\MutableClock::fromTimestamp(1_500_000_000);
     // attach to a DateTime instance
     $dateTime = new DateTime();
     $clock = (new \Arokettu\Clock\MutableClock())->setInstance($dateTime);
@@ -104,10 +114,15 @@ A clock that advances for a DateInterval value on every call::
     $step = DateInterval::createFromDateString('+1 minute');
     // move forward by 1 minute from now
     $clock = new \Arokettu\Clock\TickingClock($step);
+    // same thing in 1 step
+    $clock = \Arokettu\Clock\TickingClock::fromDateString('+1 minute');
+
     // optionally with an initial time
     $time = new DateTime('2022-02-03 12:34');
     // move forward by 1 minute from 2022-02-03 12:34:00
     $clock = new \Arokettu\Clock\TickingClock($step, $time);
+    // same thing in 1 step
+    $clock = \Arokettu\Clock\TickingClock::fromDateString('+1 minute', '2022-02-03 12:34');
 
     $clock->now(); // 2022-02-03T12:34:00
     $clock->now(); // 2022-02-03T12:35:00
@@ -175,10 +190,14 @@ A clock that can round another clock to a certain precision::
 
     // round to milliseconds
     $clock = new RoundingClock($innerClock, RoundingClock::ROUND_MILLISECONDS);
+    // same as
+    $clock = RoundingClock::toMilliseconds($innerClock);
     echo $clock->now()->format('c \\m\\s: u'), PHP_EOL; // 2012-03-04T05:06:07+00:00 ms: 899000
 
     // round to weeks
     $clock = new RoundingClock($innerClock, RoundingClock::ROUND_WEEKS);
+    // same as
+    $clock = RoundingClock::toWeeks($innerClock);
     echo $clock->now()->format('c'), PHP_EOL; // 2012-02-27T00:00:00+00:00, nearest Monday
 
 Supported precisions:

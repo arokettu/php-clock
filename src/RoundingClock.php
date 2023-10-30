@@ -77,4 +77,54 @@ final class RoundingClock implements ClockInterface
     {
         return $this->innerClock;
     }
+
+    public static function toMicroseconds(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_MICROSECONDS);
+    }
+
+    public static function toMilliseconds(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_MILLISECONDS);
+    }
+
+    public static function toSeconds(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_SECONDS);
+    }
+
+    public static function toMinutes(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_MINUTES);
+    }
+
+    public static function toHours(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_HOURS);
+    }
+
+    public static function toDays(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_DAYS);
+    }
+
+    public static function toWeeks(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_WEEKS);
+    }
+
+    public static function toMonths(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_MONTHS);
+    }
+
+    public static function toYears(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_YEARS);
+    }
+
+    public static function toIsoYears(ClockInterface $innerClock): self
+    {
+        return new self($innerClock, self::ROUND_ISO_YEARS);
+    }
 }
