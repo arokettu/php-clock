@@ -1,10 +1,22 @@
 # Clock
 
-[![Packagist](https://img.shields.io/packagist/v/arokettu/clock.svg?style=flat-square)](https://packagist.org/packages/arokettu/clock)
-[![PHP](https://img.shields.io/packagist/php-v/arokettu/clock.svg?style=flat-square)](https://packagist.org/packages/arokettu/clock)
-[![Packagist](https://img.shields.io/github/license/arokettu/php-clock.svg?style=flat-square)](LICENSE.md)
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/sandfox/php-clock/master.svg?style=flat-square)](https://gitlab.com/sandfox/php-clock/-/pipelines)
-[![Codecov](https://img.shields.io/codecov/c/gl/sandfox/php-clock?style=flat-square)](https://codecov.io/gl/sandfox/php-clock/)
+[![Packagist]][Packagist Link]
+[![PHP]][PHP Link]
+[![License]][License Link]
+[![Gitlab pipeline status]][Gitlab Link]
+[![Codecov]][Codecov Link]
+
+[Packagist]: https://img.shields.io/packagist/v/arokettu/clock.svg?style=flat-square
+[PHP]: https://img.shields.io/packagist/php-v/arokettu/clock.svg?style=flat-square
+[License]: https://img.shields.io/github/license/arokettu/php-clock.svg?style=flat-square
+[Gitlab pipeline status]: https://img.shields.io/gitlab/pipeline/sandfox/php-clock/master.svg?style=flat-square
+[Codecov]: https://img.shields.io/codecov/c/gl/sandfox/php-clock?style=flat-square
+
+[Packagist Link]: https://packagist.org/packages/arokettu/clock
+[PHP Link]: https://packagist.org/packages/arokettu/clock
+[License Link]: LICENSE.md
+[Gitlab Link]: https://gitlab.com/sandfox/php-clock/-/pipelines
+[Codecov Link]: https://codecov.io/gl/sandfox/php-clock/
 
 A collection of clock abstraction classes for [PSR-20].
 
