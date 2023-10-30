@@ -40,6 +40,8 @@ A system clock with a constant time shift::
     $clock = new \Arokettu\Clock\ShiftedClock($shift);
     // optionally with a timezone
     $clock = new \Arokettu\Clock\ShiftedClock($shift, new DateTimeZone('Europe/Tallinn'));
+    // shorter form
+    $clock = \Arokettu\Clock\ShiftedClock::fromDateString('1 week ago', new DateTimeZone('Europe/Tallinn'));
 
     $clock->now(); // exactly a week ago
 
@@ -112,10 +114,15 @@ A clock that advances for a DateInterval value on every call::
     $step = DateInterval::createFromDateString('+1 minute');
     // move forward by 1 minute from now
     $clock = new \Arokettu\Clock\TickingClock($step);
+    // same thing in 1 step
+    $clock = \Arokettu\Clock\TickingClock::fromDateString('+1 minute');
+
     // optionally with an initial time
     $time = new DateTime('2022-02-03 12:34');
     // move forward by 1 minute from 2022-02-03 12:34:00
     $clock = new \Arokettu\Clock\TickingClock($step, $time);
+    // same thing in 1 step
+    $clock = \Arokettu\Clock\TickingClock::fromDateString('+1 minute', '2022-02-03 12:34');
 
     $clock->now(); // 2022-02-03T12:34:00
     $clock->now(); // 2022-02-03T12:35:00
