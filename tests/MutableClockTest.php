@@ -148,4 +148,22 @@ class MutableClockTest extends TestCase
 
         self::assertNotEquals($clock1->now(), $clock2->now());
     }
+
+    public function testFactory()
+    {
+        $clock1 = MutableClock::fromExpression('2003-03-20 15:37');
+        self::assertEquals(new \DateTime('2003-03-20 15:37'), $clock1->now());
+
+        $clock2 = MutableClock::fromExpression('2003-03-20 15:37', new \DateTimeZone('Africa/Lagos'));
+        self::assertEquals(new \DateTime('2003-03-20 15:37 Africa/Lagos'), $clock2->now());
+
+        $tz = date_default_timezone_get();
+        date_default_timezone_set('UTC');
+        $clock3 = MutableClock::fromTimestamp(1698701296);
+        self::assertEquals('2023-10-30T21:28:16+00:00', $clock3->now()->format('c'));
+        date_default_timezone_set($tz);
+
+        $clock4 = MutableClock::fromTimestamp(1698701296, new \DateTimeZone('Europe/Tallinn'));
+        self::assertEquals('2023-10-30T23:28:16+02:00', $clock4->now()->format('c'));
+    }
 }

@@ -73,4 +73,22 @@ class StaticClockTest extends TestCase
         $clock2 = new StaticClock(new Carbon('now', new \DateTimeZone('Europe/Tallinn')));
         self::assertEquals('Europe/Tallinn', $clock2->now()->getTimezone()->getName());
     }
+
+    public function testFactory()
+    {
+        $clock1 = StaticClock::fromExpression('2003-03-20 15:37');
+        self::assertEquals(new \DateTime('2003-03-20 15:37'), $clock1->now());
+
+        $clock2 = StaticClock::fromExpression('2003-03-20 15:37', new \DateTimeZone('Africa/Lagos'));
+        self::assertEquals(new \DateTime('2003-03-20 15:37 Africa/Lagos'), $clock2->now());
+
+        $tz = date_default_timezone_get();
+        date_default_timezone_set('UTC');
+        $clock3 = StaticClock::fromTimestamp(1698701296);
+        self::assertEquals('2023-10-30T21:28:16+00:00', $clock3->now()->format('c'));
+        date_default_timezone_set($tz);
+
+        $clock4 = StaticClock::fromTimestamp(1698701296, new \DateTimeZone('Europe/Tallinn'));
+        self::assertEquals('2023-10-30T23:28:16+02:00', $clock4->now()->format('c'));
+    }
 }
