@@ -2,6 +2,17 @@
 
 ## 1.x
 
+### 1.4.0
+
+*Oct 30, 2023*
+
+* Added simplified factory methods:
+  * `StaticClock::fromDateString()` & `StaticClock::fromTimestamp()`
+  * `MutableClock::fromDateString()` & `MutableClock::fromTimestamp()`
+  * `RoundingClock::toMicroseconds()` ... `RoundingClock::toYears()`
+  * `ShiftedClock::fromDateString()`
+  * `TickingClock::fromDateString()`
+
 ### 1.3.0
 
 *Oct 18, 2023*
