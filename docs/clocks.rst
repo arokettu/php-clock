@@ -58,6 +58,10 @@ Returns a specific time that can be changed manually::
     $clock = new \Arokettu\Clock\StaticClock(); // 'now'
     // or a specific time
     $clock = new \Arokettu\Clock\StaticClock(new DateTimeImmutable('2007-01-01'));
+    // or short
+    $clock = \Arokettu\Clock\StaticClock::fromExpression('2007-01-01');
+    // or timestamp
+    $clock = \Arokettu\Clock\StaticClock::fromTimestamp(1167609600);
 
     $clock->now(); // happy new 2007
 
@@ -76,6 +80,10 @@ A clock that exposes a regular mutable DateTime that can be manipulated::
     $clock = new \Arokettu\Clock\MutableClock();
     // initialize by date time
     $clock = new \Arokettu\Clock\MutableClock(new DateTimeImmutable());
+    // initialize by expression
+    $clock = \Arokettu\Clock\MutableClock::fromExpression('yesterday');
+    // initialize by timestamp
+    $clock = \Arokettu\Clock\MutableClock::fromTimestamp(1_500_000_000);
     // attach to a DateTime instance
     $dateTime = new DateTime();
     $clock = (new \Arokettu\Clock\MutableClock())->setInstance($dateTime);
@@ -175,10 +183,14 @@ A clock that can round another clock to a certain precision::
 
     // round to milliseconds
     $clock = new RoundingClock($innerClock, RoundingClock::ROUND_MILLISECONDS);
+    // same as
+    $clock = RoundingClock::toMilliseconds($innerClock);
     echo $clock->now()->format('c \\m\\s: u'), PHP_EOL; // 2012-03-04T05:06:07+00:00 ms: 899000
 
     // round to weeks
     $clock = new RoundingClock($innerClock, RoundingClock::ROUND_WEEKS);
+    // same as
+    $clock = RoundingClock::toWeeks($innerClock);
     echo $clock->now()->format('c'), PHP_EOL; // 2012-02-27T00:00:00+00:00, nearest Monday
 
 Supported precisions:

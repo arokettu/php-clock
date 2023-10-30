@@ -10,6 +10,8 @@ use Psr\Clock\ClockInterface;
 
 final class StaticClock implements ClockInterface
 {
+    use Helpers\CreateFromFactories;
+
     /** @var DateTimeImmutable */
     private $dateTime;
 

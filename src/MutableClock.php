@@ -15,6 +15,8 @@ use Psr\Clock\ClockInterface;
  */
 final class MutableClock implements ClockInterface
 {
+    use Helpers\CreateFromFactories;
+
     /** @var DateTime */
     private $dateTime;
 
