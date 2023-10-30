@@ -76,10 +76,10 @@ class StaticClockTest extends TestCase
 
     public function testFactory()
     {
-        $clock1 = StaticClock::fromExpression('2003-03-20 15:37');
+        $clock1 = StaticClock::fromDateString('2003-03-20 15:37');
         self::assertEquals(new \DateTime('2003-03-20 15:37'), $clock1->now());
 
-        $clock2 = StaticClock::fromExpression('2003-03-20 15:37', new \DateTimeZone('Africa/Lagos'));
+        $clock2 = StaticClock::fromDateString('2003-03-20 15:37', new \DateTimeZone('Africa/Lagos'));
         self::assertEquals(new \DateTime('2003-03-20 15:37 Africa/Lagos'), $clock2->now());
 
         $tz = date_default_timezone_get();

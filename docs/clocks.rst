@@ -61,7 +61,7 @@ Returns a specific time that can be changed manually::
     // or a specific time
     $clock = new \Arokettu\Clock\StaticClock(new DateTimeImmutable('2007-01-01'));
     // or short
-    $clock = \Arokettu\Clock\StaticClock::fromExpression('2007-01-01');
+    $clock = \Arokettu\Clock\StaticClock::fromDateString('2007-01-01');
     // or timestamp
     $clock = \Arokettu\Clock\StaticClock::fromTimestamp(1167609600);
 
@@ -83,7 +83,7 @@ A clock that exposes a regular mutable DateTime that can be manipulated::
     // initialize by date time
     $clock = new \Arokettu\Clock\MutableClock(new DateTimeImmutable());
     // initialize by expression
-    $clock = \Arokettu\Clock\MutableClock::fromExpression('yesterday');
+    $clock = \Arokettu\Clock\MutableClock::fromDateString('yesterday');
     // initialize by timestamp
     $clock = \Arokettu\Clock\MutableClock::fromTimestamp(1_500_000_000);
     // attach to a DateTime instance

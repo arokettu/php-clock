@@ -15,7 +15,7 @@ trait CreateFromFactories
 {
     abstract public function __construct(DateTimeInterface $dateTime = null);
 
-    public static function fromExpression(string $datetime, DateTimeZone $timeZone = null): self
+    public static function fromDateString(string $datetime, DateTimeZone $timeZone = null): self
     {
         return new self(new DateTimeImmutable($datetime, $timeZone));
     }
