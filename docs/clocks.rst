@@ -179,7 +179,7 @@ Rounding clock
 
 ``Arokettu\Clock\RoundingClock``
 
-A clock that can round another clock to a certain precision::
+A clock that can truncate another clock to a certain precision::
 
     <?php
 
@@ -212,3 +212,24 @@ Supported precisions:
 * months (``RoundingClock::ROUND_MONTHS``)
 * calendar years (``RoundingClock::ROUND_YEARS``)
 * ISO years (``RoundingClock::ROUND_ISO_YEARS``)
+
+Offset Clock
+------------
+
+.. versionadded:: 1.5/2.5
+
+``Arokettu\Clock\OffsetClock``
+
+A wrapper clock with a constant time shift::
+
+    <?php
+
+    use Arokettu\Clock\OffsetClock;
+    use Arokettu\Clock\StaticClock;
+
+    $shift = DateInterval::createFromDateString('1 week ago');
+    $clock = new OffsetClock(new StaticClock(), $shift);
+    // or
+    $clock = OffsetClock::fromDateString(new StaticClock(), '1 week ago');
+
+    $clock->now(); // exactly a week ago

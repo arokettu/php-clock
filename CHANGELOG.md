@@ -43,6 +43,12 @@ Forked from 1.0.0
 
 ## 1.x
 
+### 1.5.0
+
+*Nov 15, 2023*
+
+* Added `OffsetClock`
+
 ### 1.4.0
 
 *Oct 30, 2023*
