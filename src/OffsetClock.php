@@ -13,18 +13,16 @@ use Psr\Clock\ClockInterface;
  */
 final class OffsetClock implements ClockInterface
 {
-    /** @var T */
-    private $innerClock;
-    /** @var DateInterval */
-    private $dateInterval;
+    private DateInterval $dateInterval;
 
     /**
      * @param T $innerClock
      */
-    public function __construct(ClockInterface $innerClock, DateInterval $dateInterval)
-    {
-        $this->innerClock = $innerClock;
-        $this->dateInterval = Helpers\DateTimeHelper::cloneInterval($dateInterval); // decouple mutable object
+    public function __construct(
+        private ClockInterface $innerClock,
+        DateInterval $dateInterval,
+    ) {
+        $this->dateInterval = clone $dateInterval; // decouple mutable object
     }
 
     public static function fromDateString(ClockInterface $innerClock, string $dateInterval): self

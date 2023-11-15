@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Arokettu\Clock\Tests;
 
 use Arokettu\Clock\MutableClock;
@@ -10,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class OffsetClockTest extends TestCase
 {
-    public function testWithMutableClock()
+    public function testWithMutableClock(): void
     {
         $innerClock = MutableClock::fromDateString('2000-01-01 00:00 Z');
         $outerClock = OffsetClock::fromDateString($innerClock, '+1 year +1 day');
@@ -22,7 +24,7 @@ class OffsetClockTest extends TestCase
         self::assertEquals('2001-02-02T00:00:00+00:00', $outerClock->now()->format('c'));
     }
 
-    public function testWithShiftedClock()
+    public function testWithShiftedClock(): void
     {
         $interval = \DateInterval::createFromDateString('-5 min');
 
