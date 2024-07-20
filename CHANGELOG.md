@@ -2,6 +2,12 @@
 
 ## 2.x
 
+### 2.6.0
+
+*Jul 20, 2024*
+
+* Float timestamps are now allowed in `MutableClock::fromTimestamp()` and `StaticClock::fromTimestamp()`
+
 ### 2.5.0
 
 *Nov 15, 2023*
