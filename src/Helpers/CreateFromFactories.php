@@ -27,14 +27,29 @@ trait CreateFromFactories
     }
 
     /**
+     * @param int|float $timestamp
      * @param DateTimeZone|null $timeZone
      */
-    public static function fromTimestamp(int $timestamp, $timeZone = null): self
+    public static function fromTimestamp($timestamp, $timeZone = null): self
     {
-        $dt = DateTimeImmutable::createFromFormat('U', \strval($timestamp));
+        if (is_int($timestamp)) {
+            $dt = self::dtFromIntTimestamp($timestamp);
+        } else {
+            $dt = self::dtFromFloatTimestamp($timestamp); // also a type check
+        }
         if ($timeZone !== null) {
             $dt = $dt->setTimezone($timeZone);
         }
         return new self($dt);
+    }
+
+    private static function dtFromIntTimestamp(int $timestamp): DateTimeImmutable
+    {
+        return DateTimeImmutable::createFromFormat('U', \strval($timestamp));
+    }
+
+    private static function dtFromFloatTimestamp(float $timestamp): DateTimeImmutable
+    {
+        return DateTimeImmutable::createFromFormat('U.u', sprintf('%.6F', $timestamp));
     }
 }

@@ -165,5 +165,14 @@ class MutableClockTest extends TestCase
 
         $clock4 = MutableClock::fromTimestamp(1698701296, new \DateTimeZone('Europe/Tallinn'));
         self::assertEquals('2023-10-30T23:28:16+02:00', $clock4->now()->format('c'));
+
+        $clock5 = MutableClock::fromTimestamp(1698701296.8452);
+        self::assertEquals('2023-10-30T21:28:16.845200+00:00', $clock5->now()->format('Y-m-d\TH:i:s.uP'));
+
+        $clock6 = MutableClock::fromTimestamp(1698701296.8);
+        self::assertEquals('2023-10-30T21:28:16.800000+00:00', $clock6->now()->format('Y-m-d\TH:i:s.uP'));
+
+        $clock7 = MutableClock::fromTimestamp(1698701296.000008);
+        self::assertEquals('2023-10-30T21:28:16.000008+00:00', $clock7->now()->format('Y-m-d\TH:i:s.uP'));
     }
 }
