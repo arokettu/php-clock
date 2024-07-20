@@ -34,7 +34,7 @@
     "require-dev": {
         "nesbot/carbon": "^1 | ^2",
         "phpunit/phpunit": ">= 6.0.0 < 10",
-        "sandfox.dev/code-standard": "^1.2022.06.29",
+        "sandfox.dev/code-standard": "^1.2024.07.05",
         "squizlabs/php_codesniffer": "*",
         "vimeo/psalm": "^4 | ^5"
     },
