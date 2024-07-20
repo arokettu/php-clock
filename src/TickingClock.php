@@ -10,7 +10,7 @@ use DateTimeInterface;
 use DateTimeZone;
 use Psr\Clock\ClockInterface;
 
-class TickingClock implements ClockInterface
+final class TickingClock implements ClockInterface
 {
     private DateInterval $dateInterval;
     private DateTimeImmutable $dateTime;
@@ -39,5 +39,12 @@ class TickingClock implements ClockInterface
         $dt = $this->dateTime;
         $this->dateTime = $dt->add($this->dateInterval);
         return $dt;
+    }
+
+    public function __debugInfo():  array
+    {
+        return [
+            'now' => $this->dateTime,
+        ];
     }
 }

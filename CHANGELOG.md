@@ -49,6 +49,13 @@ Forked from 1.0.0
 
 ## 1.x
 
+### 1.6.0
+
+*Jul 20, 2024*
+
+* Float timestamps are now allowed in `MutableClock::fromTimestamp()` and `StaticClock::fromTimestamp()`
+* Fixed PHP 8.4 deprecations
+
 ### 1.5.0
 
 *Nov 15, 2023*

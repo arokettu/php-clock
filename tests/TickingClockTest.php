@@ -88,4 +88,11 @@ class TickingClockTest extends TestCase
             }
         }
     }
+
+    public function testDebugData()
+    {
+        self::assertEquals([
+            'now' => new \DateTimeImmutable('@1698701296'),
+        ], TickingClock::fromDateString('+1 second', '@1698701296')->__debugInfo());
+    }
 }

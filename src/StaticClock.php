@@ -31,4 +31,11 @@ final class StaticClock implements ClockInterface
         $this->dateTime = DateTimeImmutable::createFromInterface($dateTime);
         return $this;
     }
+
+    public function __debugInfo():  array
+    {
+        return [
+            'now' => $this->dateTime,
+        ];
+    }
 }

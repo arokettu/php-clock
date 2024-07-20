@@ -51,6 +51,8 @@ Abstract time based
 StaticClock
 -----------
 
+.. versionchanged:: 1.6/2.6 Float timestamps are accepted
+
 ``Arokettu\Clock\StaticClock``
 
 Returns a specific time that can be changed manually::
@@ -71,6 +73,8 @@ Returns a specific time that can be changed manually::
 
 MutableClock
 ------------
+
+.. versionchanged:: 1.6/2.6 Float timestamps are accepted
 
 ``Arokettu\Clock\MutableClock``
 

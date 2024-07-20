@@ -42,4 +42,11 @@ final class MutableClock implements ClockInterface
     {
         $this->dateTime = clone $this->dateTime;
     }
+
+    public function __debugInfo():  array
+    {
+        return [
+            'now' => $this->now(),
+        ];
+    }
 }
