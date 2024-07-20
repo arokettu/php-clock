@@ -53,6 +53,9 @@ final class MutableClock implements ClockInterface
         $this->dateTime = clone $this->dateTime;
     }
 
+    /**
+     * @return mixed
+     */
     public function __get(string $name)
     {
         if ($name === 'dateTime') {
@@ -62,6 +65,9 @@ final class MutableClock implements ClockInterface
         throw new InvalidArgumentException('No such field: ' . $name); // @codeCoverageIgnore
     }
 
+    /**
+     * @param mixed $value
+     */
     public function __set(string $name, $value)
     {
         if ($name === 'dateTime') {
@@ -72,7 +78,7 @@ final class MutableClock implements ClockInterface
         throw new InvalidArgumentException('No such field: ' . $name); // @codeCoverageIgnore
     }
 
-    public function __debugInfo():  array
+    public function __debugInfo(): array
     {
         return [
             'now' => $this->now(),

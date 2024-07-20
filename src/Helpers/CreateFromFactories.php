@@ -37,7 +37,7 @@ trait CreateFromFactories
             // @codeCoverageIgnoreStart
             $dt = DateTimeImmutable::createFromTimestamp($timestamp);
             // @codeCoverageIgnoreEnd
-        } elseif (is_int($timestamp)) {
+        } elseif (\is_int($timestamp)) {
             $dt = self::dtFromIntTimestamp($timestamp);
         } else {
             $dt = self::dtFromFloatTimestamp($timestamp); // also a type check

@@ -36,7 +36,7 @@ final class StaticClock implements ClockInterface
         return $this;
     }
 
-    public function __debugInfo():  array
+    public function __debugInfo(): array
     {
         return [
             'now' => $this->dateTime,

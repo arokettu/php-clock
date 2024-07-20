@@ -49,7 +49,7 @@ final class TickingClock implements ClockInterface
         return $dt;
     }
 
-    public function __debugInfo():  array
+    public function __debugInfo(): array
     {
         return [
             'now' => $this->dateTime,
