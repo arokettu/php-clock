@@ -17,18 +17,24 @@ class TickingClock implements ClockInterface
     /** @var DateTimeImmutable */
     private $dateTime;
 
-    public function __construct(DateInterval $dateInterval, DateTimeInterface $dateTime = null)
+    /**
+     * @param DateTimeInterface|null $dateTime
+     */
+    public function __construct(DateInterval $dateInterval, $dateTime = null)
     {
         $this->dateInterval = Helpers\DateTimeHelper::cloneInterval($dateInterval); // decouple mutable object
-        $this->dateTime = $dateTime ?
-            Helpers\DateTimeHelper::createImmutableFromInterface($dateTime) :
-            new DateTimeImmutable('now');
+        $this->dateTime = $dateTime === null ?
+            new DateTimeImmutable('now') :
+            Helpers\DateTimeHelper::createImmutableFromInterface($dateTime);
     }
 
+    /**
+     * @param DateTimeZone|null $timeZone
+     */
     public static function fromDateString(
         string $dateInterval,
         string $dateTime = 'now',
-        DateTimeZone $timeZone = null
+        $timeZone = null
     ): self {
         return new self(
             DateInterval::createFromDateString($dateInterval),
