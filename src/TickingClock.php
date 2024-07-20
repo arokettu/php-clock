@@ -10,7 +10,7 @@ use DateTimeInterface;
 use DateTimeZone;
 use Psr\Clock\ClockInterface;
 
-class TickingClock implements ClockInterface
+final class TickingClock implements ClockInterface
 {
     /** @var DateInterval */
     private $dateInterval;
