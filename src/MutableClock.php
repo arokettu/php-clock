@@ -71,4 +71,11 @@ final class MutableClock implements ClockInterface
 
         throw new InvalidArgumentException('No such field: ' . $name); // @codeCoverageIgnore
     }
+
+    public function __debugInfo():  array
+    {
+        return [
+            'now' => $this->now(),
+        ];
+    }
 }

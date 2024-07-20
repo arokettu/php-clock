@@ -48,4 +48,11 @@ class TickingClock implements ClockInterface
         $this->dateTime = $dt->add($this->dateInterval);
         return $dt;
     }
+
+    public function __debugInfo():  array
+    {
+        return [
+            'now' => $this->dateTime,
+        ];
+    }
 }
