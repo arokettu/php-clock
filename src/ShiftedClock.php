@@ -7,7 +7,6 @@ namespace Arokettu\Clock;
 use DateInterval;
 use DateTimeImmutable;
 use DateTimeZone;
-use InvalidArgumentException;
 use Psr\Clock\ClockInterface;
 
 final class ShiftedClock implements ClockInterface
