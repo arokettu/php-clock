@@ -12,13 +12,13 @@ class TypesEnforcedTest extends TestCase
 {
     public function testSystemClock()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\TypeError::class);
         new SystemClock(new \stdClass());
     }
 
     public function testShiftedClock()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(\TypeError::class);
         new ShiftedClock(new \DateInterval('PT1S'), new \stdClass());
     }
 }

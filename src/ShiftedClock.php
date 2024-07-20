@@ -22,11 +22,14 @@ final class ShiftedClock implements ClockInterface
      */
     public function __construct(DateInterval $dateInterval, $timeZone = null)
     {
-        if ($timeZone !== null && !$timeZone instanceof DateTimeZone) {
-            throw new InvalidArgumentException('$timeZone must be an instance of DateTimeZone or null');
-        }
-
         $this->dateInterval = Helpers\DateTimeHelper::cloneInterval($dateInterval); // decouple mutable object
+        if ($timeZone !== null) {
+            $this->setTimeZone($timeZone);
+        }
+    }
+
+    private function setTimeZone(DateTimeZone $timeZone)
+    {
         $this->timeZone = $timeZone;
     }
 
