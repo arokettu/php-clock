@@ -89,7 +89,7 @@ class TickingClockTest extends TestCase
         }
     }
 
-    public function testDebugData()
+    public function testDebugData(): void
     {
         self::assertEquals([
             'now' => new \DateTimeImmutable('@1698701296'),

@@ -15,7 +15,7 @@ final class MutableClock implements ClockInterface
 
     public DateTime $dateTime;
 
-    public function __construct(?DateTimeInterface $dateTime = null)
+    public function __construct(DateTimeInterface|null $dateTime = null)
     {
         $this->dateTime = $dateTime ? DateTime::createFromInterface($dateTime) : new DateTime('now');
     }
@@ -43,7 +43,7 @@ final class MutableClock implements ClockInterface
         $this->dateTime = clone $this->dateTime;
     }
 
-    public function __debugInfo():  array
+    public function __debugInfo(): array
     {
         return [
             'now' => $this->now(),

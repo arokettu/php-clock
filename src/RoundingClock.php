@@ -30,7 +30,8 @@ final class RoundingClock implements ClockInterface
     public function __construct(
         private ClockInterface $innerClock,
         private int $rounding,
-    ) {}
+    ) {
+    }
 
     public function now(): DateTimeImmutable
     {

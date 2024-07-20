@@ -15,7 +15,7 @@ final class TickingClock implements ClockInterface
     private DateInterval $dateInterval;
     private DateTimeImmutable $dateTime;
 
-    public function __construct(DateInterval $dateInterval, ?DateTimeInterface $dateTime = null)
+    public function __construct(DateInterval $dateInterval, DateTimeInterface|null $dateTime = null)
     {
         $this->dateInterval = clone $dateInterval; // decouple mutable object
         $this->dateTime = $dateTime ?
@@ -26,7 +26,7 @@ final class TickingClock implements ClockInterface
     public static function fromDateString(
         string $dateInterval,
         string $dateTime = 'now',
-        ?DateTimeZone $timeZone = null
+        DateTimeZone|null $timeZone = null
     ): self {
         return new self(
             DateInterval::createFromDateString($dateInterval),
@@ -41,7 +41,7 @@ final class TickingClock implements ClockInterface
         return $dt;
     }
 
-    public function __debugInfo():  array
+    public function __debugInfo(): array
     {
         return [
             'now' => $this->dateTime,

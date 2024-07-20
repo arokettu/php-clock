@@ -97,7 +97,7 @@ class StaticClockTest extends TestCase
         self::assertEquals('2023-10-30T21:28:16.000008+00:00', $clock7->now()->format('Y-m-d\TH:i:s.uP'));
     }
 
-    public function testDebugData()
+    public function testDebugData(): void
     {
         self::assertEquals([
             'now' => new \DateTimeImmutable('@1698701296'),

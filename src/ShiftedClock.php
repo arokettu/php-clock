@@ -12,15 +12,15 @@ use Psr\Clock\ClockInterface;
 final class ShiftedClock implements ClockInterface
 {
     private DateInterval $dateInterval;
-    private ?DateTimeZone $timeZone;
+    private DateTimeZone|null $timeZone;
 
-    public function __construct(DateInterval $dateInterval, ?DateTimeZone $timeZone = null)
+    public function __construct(DateInterval $dateInterval, DateTimeZone|null $timeZone = null)
     {
         $this->dateInterval = clone $dateInterval; // decouple mutable object
         $this->timeZone = $timeZone;
     }
 
-    public static function fromDateString(string $dateInterval, ?DateTimeZone $timeZone = null): self
+    public static function fromDateString(string $dateInterval, DateTimeZone|null $timeZone = null): self
     {
         return new self(DateInterval::createFromDateString($dateInterval), $timeZone);
     }

@@ -10,13 +10,13 @@ use PHPUnit\Framework\TestCase;
 
 class TypesEnforcedTest extends TestCase
 {
-    public function testSystemClock()
+    public function testSystemClock(): void
     {
         $this->expectException(\TypeError::class);
         new SystemClock(new \stdClass());
     }
 
-    public function testShiftedClock()
+    public function testShiftedClock(): void
     {
         $this->expectException(\TypeError::class);
         new ShiftedClock(new \DateInterval('PT1S'), new \stdClass());
