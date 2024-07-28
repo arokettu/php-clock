@@ -74,6 +74,7 @@ Available clock classes:
 * TickingClock. Clock that advances an interval every call
 * CallbackClock. A wrapper for a closure that also supports generator closures
 * RoundingClock. A clock wrapper that rounds time to a certain precision
+* OffsetClock. A clock wrapper that modifies the inner clock by a given interval
 
 Read full documentation here: <https://sandfox.dev/php/clock.html>
 
