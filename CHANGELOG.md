@@ -2,6 +2,12 @@
 
 ## 2.x
 
+### 2.6.1
+
+*Sep 6, 2024*
+
+* Fixed premature generation of next value in the CallbackClock [[gl#1]]
+
 ### 2.6.0
 
 *Jul 20, 2024*
