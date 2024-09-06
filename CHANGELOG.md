@@ -55,6 +55,12 @@ Forked from 1.0.0
 
 ## 1.x
 
+### 1.6.1
+
+*Sep 6, 2024*
+
+* Fixed premature generation of next value in the CallbackClock [[gl#1]]
+
 ### 1.6.0
 
 *Jul 20, 2024*
@@ -109,3 +115,5 @@ Fix timezone being lost in the rounding clock
 *Mar 22, 2023*
 
 Initial release
+
+[gl#1]: https://gitlab.com/sandfox/php-clock/-/issues/1
