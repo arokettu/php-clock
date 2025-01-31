@@ -48,7 +48,7 @@
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^1.2024.07.20",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^5"
+        "vimeo/psalm": "^5 | ^6"
     },
     "provide": {
         "psr/clock-implementation": "1.0"

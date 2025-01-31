@@ -6,12 +6,14 @@ namespace Arokettu\Clock;
 
 use Closure;
 use DateTimeImmutable;
+use Generator;
 use Psr\Clock\ClockInterface;
 use ReflectionFunction;
 
 final class CallbackClock implements ClockInterface
 {
     private Closure $callback;
+    private Generator $generator;
 
     public function __construct(Closure $callback)
     {
@@ -19,17 +21,17 @@ final class CallbackClock implements ClockInterface
 
         // if the closure creates a generator, use it
         if ($r->isGenerator()) {
-            $this->callback = function () use (&$g, $callback): DateTimeImmutable {
-                if ($g === null) {
-                    $g = $callback();
+            $callback = function () use ($callback): DateTimeImmutable {
+                if (!isset($this->generator)) {
+                    $this->generator = $callback();
                 } else {
-                    $g->next();
+                    $this->generator->next();
                 }
-                return $g->current();
+                return $this->generator->current();
             };
-        } else {
-            $this->callback = $callback;
         }
+
+        $this->callback = $callback;
     }
 
     public function now(): DateTimeImmutable
