@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class ReplaceableClockTest extends TestCase
 {
-    public function testClockReplacement()
+    public function testClockReplacement(): void
     {
         $clock = new ReplaceableClock(new SystemClock());
 

@@ -9,11 +9,8 @@ use Psr\Clock\ClockInterface;
 
 final class ReplaceableClock implements ClockInterface
 {
-    private $innerClock;
-
-    public function __construct(ClockInterface $innerClock)
+    public function __construct(private ClockInterface $innerClock)
     {
-        $this->innerClock = $innerClock;
     }
 
     public function now(): DateTimeImmutable
