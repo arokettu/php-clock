@@ -45,6 +45,6 @@ trait CreateFromFactories
 
     private static function dtFromFloatTimestamp(float $timestamp): DateTimeImmutable
     {
-        return DateTimeImmutable::createFromFormat('U.u', sprintf('%.6F', $timestamp));
+        return DateTimeImmutable::createFromFormat('U.u', \sprintf('%.6F', $timestamp));
     }
 }

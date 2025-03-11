@@ -61,6 +61,12 @@ Forked from 1.0.0
 
 ## 1.x
 
+### 1.7.0
+
+*Mar 12, 2025*
+
+* Replaceable clock
+
 ### 1.6.1
 
 *Sep 6, 2024*

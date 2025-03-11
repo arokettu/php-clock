@@ -237,3 +237,28 @@ A wrapper clock with a constant time shift::
     $clock = OffsetClock::fromDateString(new StaticClock(), '1 week ago');
 
     $clock->now(); // exactly a week ago
+
+Replaceable Clock
+-----------------
+
+.. versionadded:: 1.7/2.7
+
+``Arokettu\Clock\ReplaceableClock``
+
+A wrapper that allows you to replace the inner clock.
+
+    <?php
+
+    use Arokettu\Clock\ReplaceableClock;
+    use Arokettu\Clock\StaticClock;
+    use Arokettu\Clock\SystemClock;
+
+    $clock = new ReplaceableClock(new SystemClock());
+
+    $clock->now(); // actual system time
+
+    $clock->setInnerClock(new StaticClock());
+
+    $clock->now(); // the time is now fixed
+    $clock->now(); // the time is now fixed
+    $clock->now(); // the time is now fixed
