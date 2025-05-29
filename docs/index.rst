@@ -10,9 +10,17 @@ A collection of clock abstraction classes for PSR-20_.
 Installation
 ============
 
+PHP 8.0+:
+
 .. code-block:: bash
 
    composer require 'arokettu/clock'
+
+PHP 7.0+:
+
+.. code-block:: bash
+
+   composer require 'arokettu/clock:^1'
 
 or if you only need :ref:`the system clock <system_clock_package>`:
 
@@ -22,6 +30,8 @@ or if you only need :ref:`the system clock <system_clock_package>`:
 
 Documentation
 =============
+
+This documentation covers both 1.x and 2.x branches.
 
 .. toctree::
    :maxdepth: 2
