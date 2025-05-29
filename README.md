@@ -65,7 +65,7 @@ $cfg->validator()->assert(
 
 Available clock classes:
 
-* SystemClock. 
+* SystemClock.
   Plain class that returns operating system clock, also available as a separate package:
   [arokettu/system-clock](https://packagist.org/packages/arokettu/system-clock)
 * ShiftedClock. System clock + fixed interval
