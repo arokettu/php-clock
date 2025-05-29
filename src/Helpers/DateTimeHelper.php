@@ -37,7 +37,7 @@ final class DateTimeHelper
             return clone $dateTime; // decouple the instance, like DateTime::createFromInterface(DateTime) does
         }
 
-        if ($dateTime instanceof DateTimeImmutable && method_exists(DateTime::class, 'createFromImmutable')) {
+        if ($dateTime instanceof DateTimeImmutable && PHP_VERSION_ID >= 70300) {
             return DateTime::createFromImmutable($dateTime);
         }
 
