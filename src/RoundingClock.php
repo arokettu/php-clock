@@ -58,7 +58,7 @@ final class RoundingClock implements ClockInterface
                 $now = $now->setTime($h, $m, $s);
                 $now = DateTimeImmutable::createFromFormat(
                     'U u',
-                    $now->getTimestamp() . ' ' . \sprintf("%03d000", $ms)
+                    $now->getTimestamp() . ' ' . \sprintf('%03d000', $ms),
                 )->setTimezone($now->getTimezone());
                 // @codeCoverageIgnoreEnd
             } else {

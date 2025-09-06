@@ -12,7 +12,6 @@
     <coverage>
         <include>
             <directory>src</directory>
-            <directory>vendor/arokettu/system-clock</directory>
         </include>
     </coverage>
     <php>

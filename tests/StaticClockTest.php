@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 
-class StaticClockTest extends TestCase
+final class StaticClockTest extends TestCase
 {
     public function testTime()
     {

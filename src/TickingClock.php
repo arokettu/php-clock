@@ -38,7 +38,7 @@ final class TickingClock implements ClockInterface
     ): self {
         return new self(
             DateInterval::createFromDateString($dateInterval),
-            new DateTimeImmutable($dateTime, $timeZone)
+            new DateTimeImmutable($dateTime, $timeZone),
         );
     }
 

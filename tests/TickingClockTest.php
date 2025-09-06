@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 
-class TickingClockTest extends TestCase
+final class TickingClockTest extends TestCase
 {
     public function testTime()
     {

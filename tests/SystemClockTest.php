@@ -7,7 +7,7 @@ namespace Arokettu\Clock\Tests;
 use Arokettu\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
 
-class SystemClockTest extends TestCase
+final class SystemClockTest extends TestCase
 {
     public function testTime()
     {

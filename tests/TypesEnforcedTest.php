@@ -8,7 +8,7 @@ use Arokettu\Clock\ShiftedClock;
 use Arokettu\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
 
-class TypesEnforcedTest extends TestCase
+final class TypesEnforcedTest extends TestCase
 {
     public function testSystemClock()
     {

@@ -10,7 +10,7 @@ use Arokettu\Clock\SystemClock;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
-class ReplaceableClockTest extends TestCase
+final class ReplaceableClockTest extends TestCase
 {
     public function testClockReplacement()
     {

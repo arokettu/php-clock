@@ -7,7 +7,7 @@ namespace Arokettu\Clock\Tests;
 use Arokettu\Clock\ShiftedClock;
 use PHPUnit\Framework\TestCase;
 
-class ShiftedClockTest extends TestCase
+final class ShiftedClockTest extends TestCase
 {
     public function testTime()
     {

@@ -14,7 +14,7 @@ final class CallbackClockTest extends TestCase
         $innerTime = new \DateTimeImmutable('1990-01-01 01:00', new \DateTimeZone('UTC'));
         $outerTime = $innerTime;
 
-        $clock = new CallbackClock(function () use (&$innerTime) {
+        $clock = new CallbackClock(static function () use (&$innerTime) {
             return $innerTime = $innerTime->modify('+1 hour');
         });
 
@@ -30,7 +30,7 @@ final class CallbackClockTest extends TestCase
         $innerTime = new \DateTimeImmutable('1990-01-01 01:00', new \DateTimeZone('UTC'));
         $outerTime = $innerTime;
 
-        $clock = new CallbackClock(function () use ($innerTime) {
+        $clock = new CallbackClock(static function () use ($innerTime) {
             while (true) {
                 yield $innerTime = $innerTime->modify('+1 hour');
             }
@@ -46,7 +46,7 @@ final class CallbackClockTest extends TestCase
     public function testIncorrectReturn()
     {
         $this->expectException(\TypeError::class);
-        $clock = new CallbackClock(function () {
+        $clock = new CallbackClock(static function () {
             return new \DateTime();
         });
         $clock->now();
@@ -56,12 +56,12 @@ final class CallbackClockTest extends TestCase
     {
         $this->expectException(\TypeError::class);
 
-        $innerGenerator = function () {
+        $innerGenerator = static function () {
             while (true) {
                 yield new \DateTimeImmutable();
             }
         };
-        $outerGenerator = function () use ($innerGenerator) {
+        $outerGenerator = static function () use ($innerGenerator) {
             yield $innerGenerator();
         };
 
@@ -71,12 +71,12 @@ final class CallbackClockTest extends TestCase
 
     public function testCorrectYield()
     {
-        $innerGenerator = function () {
+        $innerGenerator = static function () {
             while (true) {
                 yield new \DateTimeImmutable();
             }
         };
-        $outerGenerator = function () use ($innerGenerator) {
+        $outerGenerator = static function () use ($innerGenerator) {
             yield from $innerGenerator();
         };
 

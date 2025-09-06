@@ -10,7 +10,7 @@ use Arokettu\Clock\ShiftedClock;
 use Arokettu\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
 
-class OffsetClockTest extends TestCase
+final class OffsetClockTest extends TestCase
 {
     public function testWithMutableClock()
     {
