@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\Clock\Tests;
@@ -9,7 +14,7 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use PHPUnit\Framework\TestCase;
 
-class MutableClockTest extends TestCase
+final class MutableClockTest extends TestCase
 {
     public function testTime(): void
     {
@@ -127,7 +132,7 @@ class MutableClockTest extends TestCase
 
         self::assertEquals(
             (new \DateTimeImmutable('2112-12-12'))->modify('+3 weeks'),
-            $clock->now()
+            $clock->now(),
         );
     }
 

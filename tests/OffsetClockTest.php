@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\Clock\Tests;
@@ -10,7 +15,7 @@ use Arokettu\Clock\ShiftedClock;
 use Arokettu\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
 
-class OffsetClockTest extends TestCase
+final class OffsetClockTest extends TestCase
 {
     public function testWithMutableClock(): void
     {

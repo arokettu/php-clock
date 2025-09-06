@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\Clock\Tests;
@@ -7,7 +12,7 @@ namespace Arokettu\Clock\Tests;
 use Arokettu\Clock\ShiftedClock;
 use PHPUnit\Framework\TestCase;
 
-class ShiftedClockTest extends TestCase
+final class ShiftedClockTest extends TestCase
 {
     public function testTime(): void
     {

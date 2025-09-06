@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\Clock\Tests;
@@ -10,7 +15,7 @@ use Arokettu\Clock\SystemClock;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 
-class ReplaceableClockTest extends TestCase
+final class ReplaceableClockTest extends TestCase
 {
     public function testClockReplacement(): void
     {

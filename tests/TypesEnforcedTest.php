@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\Clock\Tests;
@@ -8,7 +13,7 @@ use Arokettu\Clock\ShiftedClock;
 use Arokettu\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
 
-class TypesEnforcedTest extends TestCase
+final class TypesEnforcedTest extends TestCase
 {
     public function testSystemClock(): void
     {
