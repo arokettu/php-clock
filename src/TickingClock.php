@@ -31,7 +31,7 @@ final class TickingClock implements ClockInterface
     public static function fromDateString(
         string $dateInterval,
         string $dateTime = 'now',
-        DateTimeZone|null $timeZone = null
+        DateTimeZone|null $timeZone = null,
     ): self {
         return new self(
             DateInterval::createFromDateString($dateInterval),
